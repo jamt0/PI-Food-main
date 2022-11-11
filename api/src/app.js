@@ -4,7 +4,7 @@ const express = require('express');
 // const morgan = require('morgan');
 const routes = require('./routes');
 const cors = require('cors');
-// require('./db.js');
+require('./db.js');
 
 //puerto
 const PORT = process.env.PORT || 4000;
