@@ -1,12 +1,12 @@
 const { Router} = require('express');
-const DietRouter = Router();
-const { getDiets } = require('../controllers/getDiet');
+const { getDiets } = require('../controllers/diets.js');
+const router = Router();
 
 
-DietRouter.get('/', async (req, res) => {
-    const diets = await getDiets();
+router.get('/', async (req, res) => {
+    const response = await getDiets();
     try{
-        res.status(200).send(diets);
+        res.status(200).send(response);
     } catch (error) {
         res.status(400).send(error.message);
     }
@@ -14,8 +14,4 @@ DietRouter.get('/', async (req, res) => {
 });
 
 
-
-
-
-
-module.exports = DietRouter;
+module.exports = router;
