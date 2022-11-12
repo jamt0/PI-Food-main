@@ -1,3 +1,4 @@
+const { conn } = require('./db.js');
 const express = require('express');
 // const bodyParser = require('body-parser');
 // const cookieParser = require('cookie-parser');
@@ -40,8 +41,11 @@ app.get("/", (req, res) => {
 });
 
 //Listen port
-app.listen(PORT, () => {
-  console.log(`Server is listening on ${PORT}`);
+
+conn.sync({ force: true }).then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server is listening on ${PORT}`); // eslint-disable-line no-console
+  });
 });
 
 module.exports = app;
